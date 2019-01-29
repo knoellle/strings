@@ -27,6 +27,7 @@ int main(int argc, char **argv)
 
     // buffer to store potential string of yet insufficient length
     unsigned char *buf = (unsigned char*) malloc(4);
+    // number of printable chars processed so far
     char count = 0;
 
     int c = 0;
@@ -42,12 +43,13 @@ int main(int argc, char **argv)
             count++;
             if (count == 4)
             {
-                printf("%c%c%c%c", *buf, buf[1], buf[2], buf[3]);
+                printf("%c%c%c%c", buf[0], buf[1], buf[2], buf[3]);
             }
         }
         else
         {
-            if ( count > 3)
+            // print newline if a string has been printed
+            if (count > 3)
                 printf("\n");
             count = 0;
         }
